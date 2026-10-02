@@ -1,0 +1,427 @@
+@font-face {
+    font-family: Averia;
+    src: url(averia/AveriaSerifLibre-Italic.ttf);
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  grid-template-rows:  auto 1fr auto;
+  grid-template-areas: 
+  "logo logo"
+  "sidebar main"
+  "footer footer";
+  background: #ffffff;
+  margin: 0;
+  padding: 0;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+h1{
+font-size: clamp(1.8rem, 2.5vw, 5rem);
+font-family: Averia;
+grid-area: logo;
+grid-column: 1/3 ;
+max-height: fit-content;
+top: 0;
+padding-left: 2rem;
+padding-bottom: 1rem;
+padding-top: 1rem;
+align-self: start;
+position: sticky;
+z-index: 100;
+color: #f1f1f1;
+}
+
+nav{
+  grid-area: sidebar;
+}
+
+main{
+  grid-area: main;
+}
+
+footer{
+  grid-area: footer;
+  text-align: center;
+  padding: 1rem;
+  line-height: 1.5;
+  position: relative;
+  bottom: 0;
+}
+
+/*SVG menu button*/
+#open-menu{
+  display: none;
+}
+
+#close-menu{
+  display: none;
+}
+
+/* Set styles for the sidebar */
+
+  nav {
+    float: left;
+    width: 15%;
+    margin-left: 20px;
+    padding-left: 20px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    text-align: left;
+    font-family: 'Times New Roman', Times, serif;
+    position: sticky;
+    min-width: 250px;
+    height: calc(100dvh-77.5px);
+    top: 77.5px;
+    align-self: start;
+}
+  
+  
+  nav ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav li {
+    display: block;
+    font-family: 'Times New Roman', Times, serif;
+    padding-top: 10px;
+  }
+  
+  nav li a {
+    display: inline-block;
+    padding-top: 10px;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+  }
+
+/* Remove underlines from links */
+  a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+  }
+  
+/* Set styles for the content area */
+  
+main {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+     grid-template-rows:  auto auto auto auto;
+     grid-template-areas: 
+     "title title"
+     "video video"
+     "text image"
+     "previous next" ;
+  }
+
+  main .embed-container { 
+  grid-area: video;
+  background-color: rgb(255, 255, 255);
+  position: relative; 
+  padding-bottom: 50.25%; 
+  height: 0; 
+  overflow: hidden; 
+  max-width: 100%; 
+  display: block;
+  width: 65%;
+  align-items: start;
+  margin-left: 5rem;
+} 
+
+  .embed-container iframe, .embed-container object, .embed-container embed { 
+    position: absolute; 
+    top: 0; left: 0; width:100%; height: 100%; 
+    display: inline-block;
+
+  }
+
+    main .words {
+    margin-left: 5rem;
+  
+
+  }
+
+  main h2{
+    grid-area: title;
+    font-family: Averia;
+    font-style: italic, oblique;
+  }
+
+  main h4{
+    margin-left: 10%;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 200;
+    line-height: 1.5;
+    margin-top: 1rem;
+    
+  }
+
+  main p {
+     grid-area: text;
+    font-family: 'Times New Roman', Times, serif;
+    padding-top: 3%;
+    line-height: 1.5;
+    margin-left: 5rem;
+    float: right;
+    max-width: 100%;
+  }
+  
+
+  main .poster {
+    grid-area: image;
+    max-width: 60%;
+    padding-top: 2rem;
+    margin-left: 5rem;
+    margin-bottom: 5%;
+  }
+
+main .previous{
+  grid-area: previous;
+  padding-top: 3%;
+  padding-left: 5rem;
+}
+
+main .next{
+  grid-area: next;
+  text-align: right;
+  padding-top: 3%;
+  padding-right: 5rem;
+}
+
+.previous:hover{
+  transition: 0.3s ease;
+    text-decoration: line-through;
+  }
+  
+.next:hover{
+  transition: 0.3s ease;
+    text-decoration: line-through;
+  }
+
+  /* Set styles for the footer area */
+
+.copyright {
+  font-size: smaller;
+  text-align: center; 
+}
+
+.icons{
+    color: black;
+    transition: color 0.2s;
+    text-decoration: none;                                         
+    text-align: center; 
+    display: flex;
+    column-gap: 6px;
+    justify-content: safe center;
+    
+}
+
+.icons :hover{
+    color: #aaa;
+}
+
+/*SIDEBAR HOVER*/
+
+nav ul li:hover{
+    transition: 0.3s ease;
+    text-decoration: line-through;
+}
+
+nav ul li a{
+  position: relative;
+  display: flex;
+  white-space: nowrap;
+  text-decoration: none;
+  color: black;
+  text-align: center;
+}
+
+nav li a{
+  position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    margin: 0;
+}
+
+
+/* Media queries for responsiveness */
+
+  @media screen and (max-width: 800px){
+
+  body{
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+     "logo"
+     "sidebar"
+      "main"
+     "footer";
+     grid-template-rows: auto auto 1fr auto;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  main {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+     grid-template-rows:  auto auto auto auto auto;
+     grid-template-areas: 
+     "title title"
+     "video video"
+     "text text"
+     "image image"
+     "previous next" ;
+  }
+
+  h1{
+    top: 20px;
+    position: relative;
+    z-index: 1000;
+    width: 50%;
+  }
+
+
+  main{
+    padding: 15%;
+  }
+
+  nav{
+      position: fixed;
+      height: 100%;
+      width: 100%;
+      display: none;
+      grid-row-start: 2;
+      z-index: 1; /* Sit on top */
+      left: 0;
+      top: 0;
+      margin-left: 0;
+      padding-left: 0;
+      background-color: white;
+      overflow-x: hidden; /* Disable horizontal scroll */
+      font-size: 2.5rem;
+
+    }  
+
+    .show{
+      display: block;
+
+    }
+
+
+    footer{
+     
+      bottom: 0;
+      width: 100%;
+      z-index: 2;
+    }
+
+
+.nav-links {
+  position: relative;
+  top: 25%; /* 25% from the top */
+  width: 100%; /* 100% width */
+  text-align: center; /* Centered text/links */
+  margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+nav a:hover, nav a:focus {
+  color: #f1f1f1;
+  
+}
+
+main h2{
+  text-align: center;
+  padding-bottom: 3rem;
+  padding-top: 0;
+}
+
+main p {
+  margin-left: 0;
+  padding-bottom: 3rem;
+  padding-top: 3rem;
+  text-align: center;
+}
+
+main .words{
+margin-left: 0;
+}
+main .embed-container { 
+  width: 100%;
+  margin-left: 0;
+}
+
+main .poster{
+  padding-bottom: 3rem;
+  max-width: 100%;
+  margin-left: 0;
+}
+
+main .previous{
+  text-align: start;
+  width: 100;
+  padding-left: 0;
+}
+
+main .next{
+  text-align: right;
+  width: 100;
+  padding-right: 0;
+}
+
+/*SVG menu button*/
+#open-menu{
+  display: inline-block;
+  background: none;
+  border: none;
+  padding: 1em;
+  margin-left: auto;
+  cursor: pointer;
+  position: fixed;
+  top: 20px;
+  right: 45px;
+  
+  
+}
+
+#close-menu{
+  background: none;
+  border: none;
+  padding: 1em;
+  cursor: pointer;
+  display: inline-block;
+  position: fixed;
+  top: 20px;
+  right: 45px;
+}
+
+
+.embed-container iframe, .embed-container object, .embed-container embed { 
+    top: 0; left: 0; width: 100%; height: 100%; 
+  }
+
+}
+
+
+
+
+  
